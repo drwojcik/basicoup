@@ -4,12 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Home"
+             Title="Lançamentos do Diegão"
+             BackgroundColor="#DCEDC8"
              x:Class="basicoup.Views.HomePage">
     <ContentPage.Content>
         <ListView 
             HasUnevenRows="true"
-            ItemsSource="{Binding Items}"
+            ItemsSource="{Binding Movies}"
             IsRefreshing="{Binding IsBusy}"
             ItemTapped="ListView_ItemTapped"
             
@@ -17,28 +18,37 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Margin="16" ColumnSpacing="1"
-                              RowSpacing="4">
+                        <Grid Margin="16" ColumnSpacing="0" 
+                              RowSpacing="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0"
-                                   Grid.Row="0"
-                                   Grid.RowSpan="2"
-                                   Source="{Binding PictureUrl}" />
-                            <Label Grid.Column="1" 
+                            <Image Grid.Row="0"
+                                   HeightRequest="220"
+                                   Aspect="AspectFill"
+                                   Source="{Binding FullBackdropPath}" />
+                            <BoxView 
                                 Grid.Row="0"
-                                Text="{Binding Title}"
-                                FontSize="Medium"/>
-                            <Label Grid.Column="1" 
-                                Grid.Row="1"
-                                Text="{Binding Description}"
-                                FontSize="Small"/>
+                                Grid.RowSpan="2"
+                                HeightRequest="220"
+                                Opacity="0.6" Color="#000000" />
+                            <StackLayout 
+                                Margin="16"
+                                Spacing="4"
+                                VerticalOptions="End"
+                                Grid.Row="0"  Grid.RowSpan="2">
+                                <Label 
+                                TextColor="#E1E1E1" 
+                                Text="{Binding OriginalTitle}"
+                                FontAttributes="Bold"
+                                FontSize="22"/>
+                                <BoxView HeightRequest="5" Color="#FFFFFF" Opacity="0.4" />
+                                <Label
+                                TextColor="#A5A5A5"
+                                Text="{Binding Overview }"
+                                LineBreakMode="WordWrap"
+                                FontSize="18"/>
+                            </StackLayout>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

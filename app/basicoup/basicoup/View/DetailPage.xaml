@@ -4,13 +4,83 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="{Binding Title}"
+             Title="{Binding OriginalTitle}"
+             BackgroundColor="#DCEDC8"
              x:Class="basicoup.View.DetailPage">
     <ContentPage.Content>
-        <StackLayout Margin="16" Spacing="4">
-            <Label Text="{Binding Title}" FontSize="Medium"/>
-            <Label Text="{Binding Description}" FontSize="Small"/>
-            <Image Source="{Binding PictureUrl}" />
-        </StackLayout>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="330" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    HeightRequest="330"
+                    BackgroundColor="#C16C7A"
+                    Aspect="AspectFill"
+                    Source="{Binding FullBackdropPath}" />
+                <Frame
+                    BackgroundColor="#BDBDBD"
+                    Margin="25"
+                    Padding="5"
+                    HeightRequest="250"
+                    Grid.Column="1"
+                    VerticalOptions="EndAndExpand"
+                    Grid.RowSpan="2"
+                    Grid.Row="0">
+                    <Image 
+                    Grid.Row="0"
+                    BackgroundColor="#C16C7A"
+                    Aspect="AspectFill"
+                    Source="{Binding FullPosterPath}" />
+                </Frame>
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Margin="16"
+                    Spacing="16">
+                    <Label 
+                   Margin="16, 0"
+                   Text="{Binding Id, StringFormat='#{0}'}" 
+                   TextColor="#212121" 
+                   FontAttributes="Bold" 
+                   FontSize="24"/>
+                    <Label 
+                   Margin="16, 0"
+                   Text="{Binding OriginalTitle}" 
+                   TextColor="#212121" 
+                   FontAttributes="Bold" 
+                   FontSize="24"/>
+                    <BoxView HeightRequest="5" Color="Accent" Opacity="0.4" />
+                    <Label
+                    Margin="16, 0"
+                    Text="{Binding Overview}" 
+                    TextColor="#757575"
+                    FontSize="20"/>
+                    <BoxView HeightRequest="5" Color="Accent" Opacity="0.4" />
+                    <Label
+                    Margin="16, 0"
+                    Text="{Binding Popularity, StringFormat='Popularidade: {0}'}" 
+                    TextColor="#757575"
+                    FontSize="20"/>
+                    <BoxView HeightRequest="5" Color="Accent" Opacity="0.4" />
+                    <Label
+                    Margin="16, 16, 16, 32"
+                    Text="{Binding ReleaseDate, StringFormat='Data de Lançamento: {0}'}" 
+                    TextColor="#757575"
+                    FontSize="20"/>
+                </StackLayout>
+            </Grid>
+
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -29,8 +29,8 @@ namespace basicoup.Views
             if (e.Item == null)
                 return;
 
-            var gangMember = e.Item as Item;
-            await Navigation.PushAsync(new DetailPage(gangMember));
+            var movie = e.Item as Movie;
+            await Navigation.PushAsync(new DetailPage(movie));
         }
     }
 }

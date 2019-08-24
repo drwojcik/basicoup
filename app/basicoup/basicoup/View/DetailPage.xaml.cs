@@ -14,10 +14,10 @@ namespace basicoup.View
     public partial class DetailPage : ContentPage
     {
         //private Item ViewModel;
-        public DetailPage( Item gangMember)
+        public DetailPage( Movie movie)
         {
             InitializeComponent();
-            BindingContext = gangMember;
+            BindingContext = movie;
         }
     }
 }
